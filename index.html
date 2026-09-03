@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Runner | Universo do Labirinto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #0a0c0e;
+            --bg-card: #14181d;
+            --bg-card-hover: #1c222a;
+            --accent-orange: #ff5500;
+            --accent-orange-glow: rgba(255, 85, 0, 0.35);
+            --accent-green: #2b5d3f;
+            --text-title: #ffffff;
+            --text-body: #a0aec0;
+            --border-color: #232931;
+            --font-title: 'Orbitron', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & NAVEGAÇÃO --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 12, 14, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--text-title);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(180deg, rgba(10,12,14,0.4) 0%, rgba(10,12,14,1) 100%),
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            background-color: rgba(255, 85, 0, 0.15);
+            border: 1px solid var(--accent-orange);
+            color: var(--accent-orange);
+            padding: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            font-family: var(--font-title);
+            letter-spacing: 2px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            color: var(--text-title);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: #fff;
+            padding: 0.9rem 2.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            font-family: var(--font-title);
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px var(--accent-orange-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 85, 0, 0.6);
+        }
+
+        /* --- SEÇÕES GENÉRICAS --- */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            color: var(--text-title);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 3px;
+            background: var(--accent-orange);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- SOBRE O UNIVERSO --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .about-card h3 {
+            font-family: var(--font-title);
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* --- GRID DE CARDS (LIVROS E FILMES) --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-img {
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+            filter: brightness(0.85);
+            transition: filter 0.3s ease;
+        }
+
+        .card:hover .card-img {
+            filter: brightness(1);
+        }
+
+        .card-body {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            font-family: var(--font-title);
+            color: var(--accent-orange);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-family: var(--font-title);
+            color: var(--text-title);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: #64748b;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* --- GALERIA INTERATIVA --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 220px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            color: var(--text-title);
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #050607;
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MAZE<span>RUNNER</span></div>
+        <nav>
+            <ul>
+                <li><a href="#universo">O Universo</a></li>
+                <li><a href="#livros">Livros</a></li>
+                <li><a href="#filmes">Filmes</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">A CRUEL É BOA?</span>
+            <h1>Corra. Sobreviva. Descubra a Verdade.</h1>
+            <p>Explore o acervo completo sobre a aclamada franquia literária de James Dashner e a trilogia cinematográfica da 20th Century Studios.</p>
+            <a href="#universo" class="btn-main">ENTRAR NO LABIRINTO</a>
+        </div>
+    </section>
+
+    <section id="universo">
+        <div class="section-header">
+            <h2>O Universo da Saga</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>A Clareira (The Glade)</h3>
+                <p>Uma grande área aberta cercada por gigantescas paredes de pedra que se movem todas as noites. É o lar dos "Clareanos", jovens sem memória do passado que tentam construir uma sociedade enquanto buscam uma saída.</p>
+            </div>
+            <div class="about-card">
+                <h3>Os Verdugos (Grievers)</h3>
+                <p>Criaturas biomecânicas aterrorizantes que rondam o Labirinto durante a noite. Seu picada causa o "Transformamento", um processo doloroso que recupera memórias fragmentadas da vida anterior.</p>
+            </div>
+            <div class="about-card">
+                <h3>A C.R.U.E.L. (W.C.K.D.)</h3>
+                <p>Catástrofe e Ruína: Universal e Epopéia do Labirinto. Uma organização governamental criada para encontrar a cura para o vírus "O Fulgor", usando jovens imunes como Cobaias em testes letais.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="livros">
+        <div class="section-header">
+            <h2>A Trilogia Literária</h2>
+        </div>
+        <div class="card-grid">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop" alt="Correr ou Morrer" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">LIVRO #01</span>
+                    <h3 class="card-title">Correr ou Morrer</h3>
+                    <p class="card-text">Thomas acorda em um elevador escuro sem memórias, apenas lembrando seu próprio nome. Ele é entregue à Clareira, um local cercado por um labirinto mortal que muda todas as noites.</p>
+                    <div class="card-meta">
+                        <span>Lançamento: 2009</span>
+                        <span>Autor: James Dashner</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop" alt="Prova de Fogo" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">LIVRO #02</span>
+                    <h3 class="card-title">Prova de Fogo</h3>
+                    <p class="card-text">Após escaparem do Labirinto, os sobreviventes descobrem que o mundo fora foi devastado por erupções solares e pela praga do Fulgor. Agora, eles precisam atravessar o 'Deserto' em duas semanas.</p>
+                    <div class="card-meta">
+                        <span>Lançamento: 2010</span>
+                        <span>Autor: James Dashner</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=800&auto=format&fit=crop" alt="A Cura Mortal" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">LIVRO #03</span>
+                    <h3 class="card-title">A Cura Mortal</h3>
+                    <p class="card-text">O fim está próximo. A CRUEL tirou tudo de Thomas, mas o teste final começou. Thomas precisará liderar os imunes em uma batalha decisiva para recuperar suas vidas e salvar a humanidade.</p>
+                    <div class="card-meta">
+                        <span>Lançamento: 2011</span>
+                        <span>Autor: James Dashner</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="filmes">
+        <div class="section-header">
+            <h2>Adaptações Cinematográficas</h2>
+        </div>
+        <div class="card-grid">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop" alt="Maze Runner Filme 1" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">CINEMA (2014)</span>
+                    <h3 class="card-title">Maze Runner: Correr ou Morrer</h3>
+                    <p class="card-text">Dirigido por Wes Ball e estrelado por Dylan O'Brien (Thomas), o filme adaptou com maestria o suspense claustrofóbico das paredes gigantes do Labirinto. Arrecadou mais de US$ 348 milhões pelo mundo.</p>
+                    <div class="card-meta">
+                        <span>Direção: Wes Ball</span>
+                        <span>Duração: 113 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop" alt="Maze Runner Filme 2" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">CINEMA (2015)</span>
+                    <h3 class="card-title">Maze Runner: Prova de Fogo</h3>
+                    <p class="card-text">Expande a escala do universo introduzindo os 'Cranks' (infectados) e cenários pós-apocalípticos desérticos. Apresenta novos personagens marcantes como Jorge (Giancarlo Esposito) e Brenda (Rosa Salazar).</p>
+                    <div class="card-meta">
+                        <span>Direção: Wes Ball</span>
+                        <span>Duração: 132 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=800&auto=format&fit=crop" alt="Maze Runner Filme 3" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">CINEMA (2018)</span>
+                    <h3 class="card-title">Maze Runner: A Cura Mortal</h3>
+                    <p class="card-text">A emocionante conclusão onde Thomas lidera seu grupo em uma missão de resgate na 'Última Cidade' controlada pela CRUEL. Uma produção marcada por cenas de ação épicas e alto impacto emocional.</p>
+                    <div class="card-meta">
+                        <span>Direção: Wes Ball</span>
+                        <span>Duração: 143 min</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="galeria">
+        <div class="section-header">
+            <h2>Galeria Visual</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop" alt="Paredes do Labirinto">
+                <div class="gallery-overlay">
+                    <span class="gallery-title">As Paredes do Labirinto</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop" alt="O Deserto">
+                <div class="gallery-overlay">
+                    <span class="gallery-title">A Prova do Deserto</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=800&auto=format&fit=crop" alt="A Última Cidade">
+                <div class="gallery-overlay">
+                    <span class="gallery-title">A Última Cidade (WCKD)</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=800&auto=format&fit=crop" alt="Exploração">
+                <div class="gallery-overlay">
+                    <span class="gallery-title">Os Corredores</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-quote">"Se você não estiver assustado, você não é humano." — Newt</p>
+        <p class="footer-copy">&copy; Portal Maze Runner. Projeto desenvolvido para fãs da saga literária e cinematográfica.</p>
+    </footer>
+
+</body>
+</html>

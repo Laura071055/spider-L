@@ -1,33 +1,499 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Visto Z</title>
-        <style>
-            header{
-              background-color: #B8D7AE;
-              color:#040449;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Visto Z</h1>
-            <p>O Visto Z é o seu passaporte para o intercâmbio sem enrolação.
-                Descubra bolsas 100% gratuitas,
-                programas de estudo fora e como viajar o mundo 
-                antes de terminar o ensino médio!</p>
-        </header>
-        <Main>
-          <h2>Como viajar o mundo de graça (ou quase) antes dos 18 ✈️🌍</h2>
-          <p>Por: Laura Rodrigues</p>
-          <p>Quer viajar o mundo sem gastar nada? 
-          Nesse primeiro post do Visto Z,
-          mostramos as melhores bolsas de estudo 100% gratuitas
-          e o passo a passo pra você fazer intercâmbio no ensino médio.
-          Clica e bora dominar o mundo! 🚀🎒</p>
-         </Main>
-        
-    </body>
-</html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze Runner | Arquivos da Clareira & CRUEL</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       VARIÁVEIS DE DESIGN & TEMA MAZE RUNNER
+    ========================================== */
+    :root {
+      --bg-dark: #0a0f1d;
+      --bg-card: #111827;
+      --bg-card-hover: #1f2937;
+      --accent-orange: #f97316;
+      --accent-orange-glow: rgba(249, 115, 22, 0.35);
+      --accent-green: #10b981;
+      --accent-green-glow: rgba(16, 185, 129, 0.3);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --font-title: 'Orbitron', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    /* ==========================================
+       RESET & BASE STYLES
+    ========================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-orange);
+      border-radius: 4px;
+    }
+
+    /* ==========================================
+       HEADER & NAVEGAÇÃO
+    ========================================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 15, 29, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      color: var(--accent-orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-orange);
+      text-shadow: 0 0 8px var(--accent-orange-glow);
+    }
+
+    /* ==========================================
+       HERO SECTION
+    ========================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(180deg, rgba(10, 15, 29, 0.4) 0%, var(--bg-dark) 100%),
+                  url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 90%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid var(--accent-orange);
+      color: var(--accent-orange);
+      font-family: var(--font-title);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      font-family: var(--font-title);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent-orange);
+      color: #fff;
+      box-shadow: 0 0 20px var(--accent-orange-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-main);
+    }
+
+    /* ==========================================
+       SEÇÃO: RESUMO DA SAGA
+    ========================================== */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-tag {
+      color: var(--accent-green);
+      font-family: var(--font-title);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-orange);
+    }
+
+    .stat-number {
+      font-family: var(--font-title);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent-orange);
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ==========================================
+       SEÇÃO: LIVROS
+    ========================================== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-orange);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      filter: brightness(0.85);
+      transition: filter 0.3s ease;
+    }
+
+    .card:hover .card-img {
+      filter: brightness(1);
+    }
+
+    .card-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      font-family: var(--font-title);
+      font-size: 0.75rem;
+      color: var(--accent-orange);
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .card-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    /* ==========================================
+       SEÇÃO: FILMES
+    ========================================== */
+    .movie-banner {
+      background: linear-gradient(90deg, var(--bg-card) 0%, rgba(17, 24, 39, 0.6) 100%),
+                  url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80') center/cover;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .movie-info h3 {
+      font-family: var(--font-title);
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: #fff;
+    }
+
+    .movie-tag-group {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================
+       SEÇÃO: PERSONAGENS
+    ========================================== */
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .character-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 380px;
+      border: 1px solid var(--border-color);
+    }
+
+    .character-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .character-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .character-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.2) 60%, transparent 100%);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .character-name {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .character-role {
+      font-size: 0.85rem;
+      color: var(--accent-orange);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .character-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================
+       TERMINAL CRUEL INTERATIVO
+    ========================================== */
+    .terminal-section {
+      background: #050811;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 10px;
+      padding: 2rem;
+      font-family: monospace;
+      color: var(--accent-green);
+      box-shadow: 0 0 25px var(--accent-green-glow);
+      margin-top: 4rem;
+    }
+
+    .terminal-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+      padding-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .terminal-body {
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .terminal-btn {
+      margin-top: 1.5rem;
+      background: var(--accent-green);
+      color: #000;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-family: var(--font-title);
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: opacity 0.3s ease;
+    }
+
+    .terminal-btn:hover {
+      opacity: 0.85;
+    }
+
+    /* ==========================================
+       FOOTER
+    ========================================== */
+    footer {
+      border-

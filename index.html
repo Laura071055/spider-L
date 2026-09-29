@@ -1,5 +1,2273 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MAZE RUNNER // WICKED ARCHIVES</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           MAZE RUNNER // WICKED ARCHIVES
+           ESTÉTICA CINEMATOGRÁFICA
+        ========================================================= */
+
+        :root {
+            --black: #050606;
+            --black-2: #080a09;
+            --dark: #0c100e;
+            --panel: #111714;
+            --panel-2: #171d19;
+
+            --green: #304c36;
+            --green-light: #66896a;
+
+            --orange: #ff5a00;
+            --orange-dark: #a52f00;
+            --orange-glow: rgba(255, 90, 0, .45);
+
+            --white: #f3f3ef;
+            --gray: #9ba49e;
+            --gray-dark: #56605a;
+
+            --border: rgba(150, 170, 150, .14);
+
+            --title: "Orbitron", sans-serif;
+            --body: "Inter", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(48, 76, 54, .12),
+                    transparent 35%
+                ),
+                var(--black);
+
+            color: var(--gray);
+            font-family: var(--body);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: .07;
+
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,.08) 3px
+                );
+
+            mix-blend-mode: overlay;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================================================
+           SCROLLBAR
+        ========================================================= */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050606;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #26372a;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--orange);
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 76px;
+
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 4vw;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(4,6,5,.97),
+                    rgba(4,6,5,.82)
+                );
+
+            border-bottom: 1px solid rgba(255,255,255,.08);
+
+            backdrop-filter: blur(14px);
+
+            transition: background .3s ease;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+
+            width: 25%;
+            height: 2px;
+
+            background: var(--orange);
+
+            box-shadow:
+                0 0 15px var(--orange),
+                0 0 40px var(--orange);
+        }
+
+        .logo {
+            font-family: var(--title);
+            color: white;
+            font-size: 1.15rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-family: var(--title);
+            font-size: .55rem;
+            letter-spacing: 2px;
+
+            color: #728076;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+
+            background: var(--orange);
+
+            box-shadow: 0 0 12px var(--orange);
+
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            50% {
+                opacity: .3;
+                transform: scale(.7);
+            }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            position: relative;
+
+            font-family: var(--title);
+            font-size: .62rem;
+            letter-spacing: 1.4px;
+
+            color: #929b94;
+
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+
+            bottom: -9px;
+            left: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--orange);
+
+            transition: .3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 130px 8vw 80px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4,6,5,.98) 0%,
+                    rgba(4,6,5,.84) 38%,
+                    rgba(4,6,5,.35) 70%,
+                    rgba(4,6,5,.9) 100%
+                ),
+                url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=90&w=2000&auto=format&fit=crop")
+                center / cover;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent 60%,
+                    var(--black) 100%
+                );
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 20% 50%,
+                    rgba(255,90,0,.13),
+                    transparent 25%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+        .classified {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            border: 1px solid rgba(255,90,0,.5);
+
+            background: rgba(255,90,0,.08);
+
+            padding: 9px 14px;
+
+            font-family: var(--title);
+            font-size: .62rem;
+            letter-spacing: 3px;
+
+            color: var(--orange);
+
+            margin-bottom: 25px;
+        }
+
+        .classified::before {
+            content: "●";
+
+            animation: pulse 1s infinite;
+        }
+
+        .hero h1 {
+            font-family: var(--title);
+
+            font-size: clamp(3rem, 7vw, 7.8rem);
+
+            line-height: .91;
+
+            font-weight: 900;
+
+            color: white;
+
+            letter-spacing: -4px;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                0 4px 20px rgba(0,0,0,.8);
+
+            transition:
+                opacity 1s ease,
+                transform 1s ease;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+
+            text-shadow:
+                0 0 35px rgba(255,90,0,.35);
+        }
+
+        .hero-subtitle {
+            max-width: 650px;
+
+            margin-top: 28px;
+
+            font-size: 1.05rem;
+
+            line-height: 1.8;
+
+            color: #bac0ba;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 48px;
+
+            padding: 0 25px;
+
+            font-family: var(--title);
+            font-size: .65rem;
+            letter-spacing: 2px;
+
+            border: 1px solid rgba(255,255,255,.18);
+
+            transition: .3s;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+
+            box-shadow:
+                0 0 25px rgba(255,90,0,.2);
+        }
+
+        .btn-primary:hover {
+            background: #ff6b1a;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 0 35px rgba(255,90,0,.45);
+        }
+
+        .btn-secondary {
+            background: rgba(0,0,0,.4);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* =========================================================
+           HERO HUD
+        ========================================================= */
+
+        .hero-hud {
+            position: absolute;
+
+            right: 5vw;
+            bottom: 80px;
+
+            width: 230px;
+
+            padding: 18px;
+
+            border-left: 2px solid var(--orange);
+
+            background: rgba(5,7,6,.75);
+
+            backdrop-filter: blur(8px);
+
+            font-family: monospace;
+            font-size: .65rem;
+
+            color: #748078;
+
+            z-index: 3;
+        }
+
+        .hud-line {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 7px 0;
+
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .hud-line strong {
+            color: var(--orange);
+        }
+
+        /* =========================================================
+           SEÇÕES
+        ========================================================= */
+
+        section {
+            position: relative;
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding: 120px 6vw;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 18px;
+
+            font-family: var(--title);
+            font-size: .62rem;
+            letter-spacing: 3px;
+
+            color: var(--orange);
+        }
+
+        .section-label::before {
+            content: "";
+
+            width: 35px;
+            height: 2px;
+
+            background: var(--orange);
+
+            box-shadow: 0 0 10px var(--orange);
+        }
+
+        .section-title {
+            font-family: var(--title);
+
+            font-size: clamp(2rem, 4vw, 4rem);
+
+            line-height: 1;
+
+            color: white;
+
+            text-transform: uppercase;
+
+            letter-spacing: -1px;
+        }
+
+        .section-intro {
+            max-width: 750px;
+
+            margin-top: 25px;
+
+            line-height: 1.9;
+
+            color: #909a93;
+        }
+
+        /* =========================================================
+           UNIVERSO
+        ========================================================= */
+
+        .universe {
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(10,15,12,.98),
+                    rgba(10,15,12,.75)
+                );
+        }
+
+        .universe-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 1px;
+
+            margin-top: 60px;
+
+            background: var(--border);
+
+            border: 1px solid var(--border);
+        }
+
+        .universe-card {
+            min-height: 300px;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #131a16,
+                    #0b0f0d
+                );
+
+            transition: .35s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .universe-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            right: -50px;
+            bottom: -50px;
+
+            background: var(--orange);
+
+            filter: blur(50px);
+
+            opacity: 0;
+
+            transition: .4s;
+        }
+
+        .universe-card:hover {
+            background: #18201b;
+
+            transform: translateY(-5px);
+        }
+
+        .universe-card:hover::after {
+            opacity: .15;
+        }
+
+        .number {
+            font-family: var(--title);
+
+            color: #3c4940;
+
+            font-size: 2.5rem;
+
+            font-weight: 900;
+        }
+
+        .universe-card h3 {
+            font-family: var(--title);
+
+            color: white;
+
+            margin: 30px 0 15px;
+
+            font-size: 1rem;
+
+            letter-spacing: 1px;
+        }
+
+        .universe-card p {
+            font-size: .88rem;
+
+            line-height: 1.8;
+
+            color: #858f88;
+        }
+
+        /* =========================================================
+           LIVROS
+        ========================================================= */
+
+        .story-layout {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 80px;
+
+            align-items: center;
+
+            margin-top: 70px;
+        }
+
+        .story-image {
+            min-height: 550px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+
+            background:
+                url("https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=90&w=1200&auto=format&fit=crop")
+                center / cover;
+        }
+
+        .story-image::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5,7,6,.15),
+                    rgba(5,7,6,.9)
+                );
+        }
+
+        .story-stamp {
+            position: absolute;
+
+            left: 25px;
+            bottom: 25px;
+
+            z-index: 2;
+
+            padding: 12px;
+
+            border: 1px solid var(--orange);
+
+            color: var(--orange);
+
+            font-family: var(--title);
+            font-size: .55rem;
+            letter-spacing: 2px;
+
+            background: rgba(0,0,0,.7);
+        }
+
+        .story-text h3 {
+            font-family: var(--title);
+
+            color: white;
+
+            font-size: 1.8rem;
+
+            margin-bottom: 20px;
+        }
+
+        .story-text p {
+            line-height: 1.9;
+
+            color: #8e9891;
+
+            margin-bottom: 18px;
+        }
+
+        .quote {
+            border-left: 3px solid var(--orange);
+
+            padding: 18px 20px;
+
+            background: rgba(255,90,0,.05);
+
+            color: #c7ccc7;
+
+            font-style: italic;
+
+            margin-top: 25px;
+        }
+
+        /* =========================================================
+           BOOK TIMELINE
+        ========================================================= */
+
+        .book-list {
+            margin-top: 65px;
+
+            display: grid;
+
+            gap: 2px;
+        }
+
+        .book {
+            display: grid;
+
+            grid-template-columns: 90px 1fr 150px;
+
+            gap: 25px;
+
+            align-items: center;
+
+            padding: 28px;
+
+            background: #0e1310;
+
+            border: 1px solid transparent;
+
+            transition: .3s;
+        }
+
+        .book:hover {
+            border-color: var(--orange);
+
+            background: #151b17;
+        }
+
+        .book-number {
+            font-family: var(--title);
+
+            font-size: 2rem;
+
+            color: #35443a;
+        }
+
+        .book h3 {
+            font-family: var(--title);
+
+            font-size: 1rem;
+
+            color: white;
+
+            margin-bottom: 7px;
+        }
+
+        .book p {
+            font-size: .85rem;
+
+            line-height: 1.7;
+
+            color: #79837c;
+        }
+
+        .book-year {
+            text-align: right;
+
+            font-family: var(--title);
+
+            color: var(--orange);
+
+            font-size: .65rem;
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================================================
+           FILMES
+        ========================================================= */
+
+        .movies {
+            background:
+                linear-gradient(
+                    180deg,
+                    #070908,
+                    #0c120e,
+                    #070908
+                );
+        }
+
+        .movie-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-top: 60px;
+        }
+
+        .movie-card {
+            position: relative;
+
+            min-height: 560px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+
+            background: #101512;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            inset: 0;
+
+            object-fit: cover;
+
+            filter:
+                brightness(.42)
+                saturate(.7);
+
+            transition: .6s;
+        }
+
+        .movie-card:hover img {
+            transform: scale(1.08);
+
+            filter:
+                brightness(.58)
+                saturate(.9);
+        }
+
+        .movie-card::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 20%,
+                    rgba(5,7,6,.95) 90%
+                );
+        }
+
+        .movie-info {
+            position: absolute;
+
+            z-index: 2;
+
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+        }
+
+        .movie-tag {
+            color: var(--orange);
+
+            font-family: var(--title);
+
+            font-size: .6rem;
+
+            letter-spacing: 2px;
+        }
+
+        .movie-info h3 {
+            color: white;
+
+            font-family: var(--title);
+
+            font-size: 1.25rem;
+
+            margin: 10px 0;
+        }
+
+        .movie-info p {
+            font-size: .84rem;
+
+            line-height: 1.7;
+
+            color: #a3aaa4;
+        }
+
+        /* =========================================================
+           ELENCO
+        ========================================================= */
+
+        .cast-section {
+            background:
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(255,90,0,.07),
+                    transparent 30%
+                );
+        }
+
+        .cast-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-top: 60px;
+        }
+
+        .cast-card {
+            position: relative;
+
+            min-height: 500px;
+
+            overflow: hidden;
+
+            background: #0e1310;
+
+            border: 1px solid var(--border);
+
+            transition: .4s;
+        }
+
+        .cast-card:hover {
+            transform: translateY(-8px);
+
+            border-color: rgba(255,90,0,.5);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.5);
+        }
+
+        .cast-photo {
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            inset: 0;
+
+            object-fit: cover;
+
+            object-position: center top;
+
+            filter:
+                grayscale(.2)
+                brightness(.65)
+                saturate(.7);
+
+            transition: .5s;
+        }
+
+        .cast-card:hover .cast-photo {
+            filter:
+                grayscale(0)
+                brightness(.78)
+                saturate(1);
+
+            transform: scale(1.04);
+        }
+
+        .cast-card::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 15%,
+                    rgba(4,6,5,.94) 88%
+                );
+        }
+
+        .cast-info {
+            position: absolute;
+
+            z-index: 3;
+
+            left: 24px;
+            right: 24px;
+            bottom: 24px;
+        }
+
+        .actor {
+            color: var(--orange);
+
+            font-family: var(--title);
+
+            font-size: .58rem;
+
+            letter-spacing: 2px;
+        }
+
+        .cast-info h3 {
+            color: white;
+
+            font-family: var(--title);
+
+            font-size: 1.25rem;
+
+            margin: 7px 0;
+        }
+
+        .cast-info p {
+            color: #9ba39d;
+
+            font-size: .82rem;
+
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           ARQUIVOS WICKED
+        ========================================================= */
+
+        .files-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-top: 60px;
+        }
+
+        .file-card {
+            padding: 30px;
+
+            min-height: 260px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #121814,
+                    #090c0a
+                );
+
+            border: 1px solid var(--border);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .file-card::before {
+            content: "WICKED // CLASSIFIED";
+
+            position: absolute;
+
+            top: 20px;
+            right: -35px;
+
+            transform: rotate(35deg);
+
+            padding: 5px 30px;
+
+            background: rgba(255,90,0,.12);
+
+            color: var(--orange);
+
+            font-family: monospace;
+
+            font-size: .5rem;
+        }
+
+        .file-card h3 {
+            font-family: var(--title);
+
+            color: white;
+
+            font-size: 1rem;
+
+            margin-bottom: 15px;
+        }
+
+        .file-card p {
+            color: #828d85;
+
+            line-height: 1.8;
+
+            font-size: .84rem;
+        }
+
+        /* =========================================================
+           GALERIA
+        ========================================================= */
+
+        .gallery {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+
+            margin-top: 60px;
+        }
+
+        .gallery-item {
+            height: 280px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(2),
+        .gallery-item:nth-child(4) {
+            margin-top: 35px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            filter:
+                brightness(.55)
+                saturate(.65);
+
+            transition: .6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+
+            filter:
+                brightness(.8)
+                saturate(.9);
+        }
+
+        .gallery-item span {
+            position: absolute;
+
+            left: 15px;
+            bottom: 15px;
+
+            z-index: 2;
+
+            color: white;
+
+            font-family: var(--title);
+
+            font-size: .55rem;
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 70px 6vw;
+
+            border-top: 1px solid var(--border);
+
+            background: #030504;
+
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--title);
+
+            color: white;
+
+            font-size: 1.4rem;
+
+            letter-spacing: 4px;
+        }
+
+        .footer-logo span {
+            color: var(--orange);
+        }
+
+        footer p {
+            max-width: 600px;
+
+            margin: 20px auto;
+
+            color: #626b65;
+
+            font-size: .8rem;
+
+            line-height: 1.8;
+        }
+
+        .credits {
+            font-family: monospace;
+
+            color: #39423c;
+
+            font-size: .6rem;
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            nav {
+                display: none;
+            }
+
+            .status {
+                display: none;
+            }
+
+            .hero-hud {
+                display: none;
+            }
+
+            .universe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .story-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .movie-grid,
+            .cast-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .files-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                height: 65px;
+            }
+
+            section {
+                padding: 85px 5vw;
+            }
+
+            .hero {
+                padding: 110px 6vw 70px;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+                letter-spacing: -2px;
+            }
+
+            .hero-subtitle {
+                font-size: .9rem;
+            }
+
+            .universe-grid,
+            .movie-grid,
+            .cast-grid,
+            .files-grid,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(2),
+            .gallery-item:nth-child(4) {
+                margin-top: 0;
+            }
+
+            .book {
+                grid-template-columns: 55px 1fr;
+            }
+
+            .book-year {
+                display: none;
+            }
+
+            .story-image {
+                min-height: 400px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .cast-card {
+                min-height: 520px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <a href="#" class="logo">
+        MAZE<span>RUNNER</span>
+    </a>
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="#universo">UNIVERSO</a>
+            </li>
+
+            <li>
+                <a href="#livros">LIVROS</a>
+            </li>
+
+            <li>
+                <a href="#filmes">FILMES</a>
+            </li>
+
+            <li>
+                <a href="#elenco">ELENCO</a>
+            </li>
+
+            <li>
+                <a href="#arquivos">ARQUIVOS</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        SYSTEM ONLINE // WICKED
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     CONTEÚDO
+========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="classified">
+            ARQUIVO RESTRITO // NÍVEL 05
+        </div>
+
+        <h1>
+            CORRA.<br>
+            SOBREVIVA.<br>
+            <span>LEMBRE.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+
+            Entre na Clareira e descubra o universo de
+            <strong>Maze Runner</strong>: os livros de James Dashner,
+            a adaptação cinematográfica, os Clareanos, o Labirinto,
+            os Verdugos e os experimentos da WICKED.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#universo" class="btn btn-primary">
+                ENTRAR NO LABIRINTO
+            </a>
+
+            <a href="#elenco" class="btn btn-secondary">
+                CONHECER OS CLAREANOS
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-hud">
+
+        <div class="hud-line">
+            <span>STATUS</span>
+            <strong>ACTIVE</strong>
+        </div>
+
+        <div class="hud-line">
+            <span>SUBJECT</span>
+            <strong>THOMAS</strong>
+        </div>
+
+        <div class="hud-line">
+            <span>MEMORY</span>
+            <strong>LOCKED</strong>
+        </div>
+
+        <div class="hud-line">
+            <span>MAZE</span>
+            <strong>OPEN</strong>
+        </div>
+
+        <div class="hud-line">
+            <span>THREAT</span>
+            <strong>HIGH</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     UNIVERSO
+========================================================= -->
+
+<section id="universo" class="universe">
+
+    <div class="section-label">
+        ARQUIVO 001
+    </div>
+
+    <h2 class="section-title">
+        O Universo
+    </h2>
+
+    <p class="section-intro">
+
+        O universo de Maze Runner combina ficção científica,
+        sobrevivência e mistério. Thomas desperta sem memória
+        em uma comunidade cercada por um Labirinto gigantesco.
+
+        O primeiro livro apresenta essa situação como um enigma
+        progressivo: cada nova informação abre uma pergunta ainda maior.
+
+    </p>
+
+
+    <div class="universe-grid">
+
+
+        <article class="universe-card">
+
+            <div class="number">
+                01
+            </div>
+
+            <h3>
+                A CLAREIRA
+            </h3>
+
+            <p>
+
+                Uma comunidade construída no centro do Labirinto.
+                Os jovens conhecidos como Clareanos precisam produzir
+                comida, organizar tarefas e sobreviver enquanto os
+                Corredores exploram as paredes em busca de uma saída.
+
+            </p>
+
+        </article>
+
+
+        <article class="universe-card">
+
+            <div class="number">
+                02
+            </div>
+
+            <h3>
+                O LABIRINTO
+            </h3>
+
+            <p>
+
+                Uma estrutura gigantesca, formada por paredes de pedra
+                que alteram sua configuração. A exploração depende de
+                mapas, memória espacial, velocidade e trabalho em equipe.
+
+            </p>
+
+        </article>
+
+
+        <article class="universe-card">
+
+            <div class="number">
+                03
+            </div>
+
+            <h3>
+                OS VERDUGOS
+            </h3>
+
+            <p>
+
+                Criaturas biomecânicas que transformam a exploração do
+                Labirinto em uma corrida contra o tempo. No cinema,
+                seu design mistura elementos orgânicos e mecânicos.
+
+            </p>
+
+        </article>
+
+
+        <article class="universe-card">
+
+            <div class="number">
+                04
+            </div>
+
+            <h3>
+                WICKED / C.R.U.E.L.
+            </h3>
+
+            <p>
+
+                A organização responsável pelos experimentos que envolvem
+                Thomas e os demais jovens. Seu objetivo está ligado à
+                busca de uma solução para a crise que devastou o mundo.
+
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LIVROS
+========================================================= -->
+
+<section id="livros">
+
+    <div class="section-label">
+        ARQUIVO 002 // LITERATURA
+    </div>
+
+    <h2 class="section-title">
+
+        A História<br>
+        nos Livros
+
+    </h2>
+
+
+    <div class="story-layout">
+
+
+        <div class="story-image">
+
+            <div class="story-stamp">
+
+                ORIGINAL SOURCE // JAMES DASHNER
+
+            </div>
+
+        </div>
+
+
+        <div class="story-text">
+
+            <h3>
+                Antes das telas, existia o Labirinto.
+            </h3>
+
+            <p>
+
+                Publicado originalmente em 2009,
+                <strong>The Maze Runner</strong> acompanha Thomas,
+                um adolescente que acorda em um elevador sem lembrar
+                de sua vida anterior.
+
+                Ele chega à Clareira, onde encontra outros jovens
+                que também perderam suas memórias.
+
+            </p>
+
+            <p>
+
+                Ao redor deles existe um Labirinto que muda
+                constantemente. Os Corredores entram durante o dia
+                para registrar seus caminhos e precisam retornar
+                antes do fechamento das paredes.
+
+            </p>
+
+            <p>
+
+                A chegada de Teresa altera completamente a dinâmica
+                da comunidade.
+
+                A partir daí, o mistério deixa de ser apenas
+                "como escapar?" e passa a envolver a própria
+                identidade dos personagens e o motivo pelo qual
+                eles foram colocados naquele lugar.
+
+            </p>
+
+            <div class="quote">
+
+                "A verdade pode ser tão perigosa quanto
+                o próprio Labirinto."
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="book-list">
+
+
+        <article class="book">
+
+            <div class="book-number">
+                01
+            </div>
+
+            <div>
+
+                <h3>
+                    THE MAZE RUNNER — CORRER OU MORRER
+                </h3>
+
+                <p>
+
+                    Thomas desperta sem memória na Clareira e precisa
+                    compreender o funcionamento do Labirinto antes que
+                    os segredos do lugar destruam a comunidade.
+
+                </p>
+
+            </div>
+
+            <div class="book-year">
+                2009
+            </div>
+
+        </article>
+
+
+        <article class="book">
+
+            <div class="book-number">
+                02
+            </div>
+
+            <div>
+
+                <h3>
+                    THE SCORCH TRIALS — PROVA DE FOGO
+                </h3>
+
+                <p>
+
+                    Depois do Labirinto, a história amplia sua escala.
+                    Thomas e os sobreviventes enfrentam um ambiente
+                    devastado e novas ameaças.
+
+                </p>
+
+            </div>
+
+            <div class="book-year">
+                2010
+            </div>
+
+        </article>
+
+
+        <article class="book">
+
+            <div class="book-number">
+                03
+            </div>
+
+            <div>
+
+                <h3>
+                    THE DEATH CURE — A CURA MORTAL
+                </h3>
+
+                <p>
+
+                    Thomas precisa lidar com as consequências dos testes,
+                    com a WICKED e com a questão central que atravessa
+                    toda a série.
+
+                </p>
+
+            </div>
+
+            <div class="book-year">
+                2011
+            </div>
+
+        </article>
+
+
+        <article class="book">
+
+            <div class="book-number">
+                04
+            </div>
+
+            <div>
+
+                <h3>
+                    THE KILL ORDER
+                </h3>
+
+                <p>
+
+                    A história retorna ao início da catástrofe e mostra
+                    acontecimentos anteriores à trilogia principal.
+
+                </p>
+
+            </div>
+
+            <div class="book-year">
+                PREQUEL
+            </div>
+
+        </article>
+
+
+        <article class="book">
+
+            <div class="book-number">
+                05
+            </div>
+
+            <div>
+
+                <h3>
+                    THE FEVER CODE
+                </h3>
+
+                <p>
+
+                    O segundo prequel aprofunda a origem de Thomas,
+                    da WICKED e do próprio projeto do Labirinto.
+
+                </p>
+
+            </div>
+
+            <div class="book-year">
+                PREQUEL
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FILMES
+========================================================= -->
+
+<section id="filmes" class="movies">
+
+    <div class="section-label">
+        ARQUIVO 003 // CINEMA
+    </div>
+
+    <h2 class="section-title">
+
+        A Trilogia<br>
+        Cinematográfica
+
+    </h2>
+
+    <p class="section-intro">
+
+        A adaptação cinematográfica começou em 2014 com direção
+        de Wes Ball. O primeiro filme apresenta Thomas e os Clareanos
+        presos na Clareira e cercados pelo Labirinto.
+
+    </p>
+
+
+    <div class="movie-grid">
+
+
+        <article class="movie-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=90&w=1200&auto=format&fit=crop"
+                alt="O Labirinto"
+            >
+
+            <div class="movie-info">
+
+                <span class="movie-tag">
+                    FILME 01 // 2014
+                </span>
+
+                <h3>
+                    CORRER OU MORRER
+                </h3>
+
+                <p>
+
+                    Thomas chega à Clareira sem memória e descobre
+                    que existe uma saída escondida dentro de um
+                    gigantesco Labirinto patrulhado pelos Verdugos.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=90&w=1200&auto=format&fit=crop"
+                alt="Prova de Fogo"
+            >
+
+            <div class="movie-info">
+
+                <span class="movie-tag">
+                    FILME 02 // 2015
+                </span>
+
+                <h3>
+                    PROVA DE FOGO
+                </h3>
+
+                <p>
+
+                    A história deixa a Clareira e apresenta um mundo
+                    exterior devastado. Os sobreviventes precisam
+                    atravessar o ambiente conhecido como Scorch.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=90&w=1200&auto=format&fit=crop"
+                alt="A Cura Mortal"
+            >
+
+            <div class="movie-info">
+
+                <span class="movie-tag">
+                    FILME 03 // 2018
+                </span>
+
+                <h3>
+                    A CURA MORTAL
+                </h3>
+
+                <p>
+
+                    Thomas e seus aliados entram em uma missão para
+                    resgatar Minho e confrontar diretamente a organização
+                    responsável pelos experimentos.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ELENCO
+========================================================= -->
+
+<section id="elenco" class="cast-section">
+
+    <div class="section-label">
+        ARQUIVO 004 // SUJEITOS
+    </div>
+
+    <h2 class="section-title">
+        Os Clareanos
+    </h2>
+
+    <p class="section-intro">
+
+        Os personagens são o centro da história.
+        Cada um possui uma função diferente dentro da Clareira
+        e ajuda a construir o mistério do Labirinto.
+
+    </p>
+
+
+    <div class="cast-grid">
+
+
+        <!-- =====================================================
+             THOMAS
+        ====================================================== -->
+
+        <article class="cast-card">
+
+            <img
+                class="cast-photo"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Dylan%20O%27Brien%20%2813948986583%29.jpg"
+                alt="Dylan O'Brien como Thomas"
+            >
+
+            <div class="cast-info">
+
+                <span class="actor">
+                    DYLAN O'BRIEN
+                </span>
+
+                <h3>
+                    THOMAS
+                </h3>
+
+                <p>
+
+                    O protagonista.
+
+                    Thomas desperta sem memória e rapidamente
+                    começa a questionar as regras da Clareira.
+
+                    Sua curiosidade o coloca diretamente em conflito
+                    com o sistema que mantém os Clareanos presos.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- =====================================================
+             TERESA
+        ====================================================== -->
+
+        <article class="cast-card">
+
+            <img
+                class="cast-photo"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kaya%20Scodelario%20by%20Gage%20Skidmore%202014.jpg"
+                alt="Kaya Scodelario como Teresa"
+            >
+
+            <div class="cast-info">
+
+                <span class="actor">
+                    KAYA SCODELARIO
+                </span>
+
+                <h3>
+                    TERESA
+                </h3>
+
+                <p>
+
+                    A chegada de Teresa muda completamente
+                    a situação da Clareira.
+
+                    Sua conexão com Thomas é uma das peças
+                    centrais do mistério.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- =====================================================
+             NEWT
+        ====================================================== -->
+
+        <article class="cast-card">
+
+            <img
+                class="cast-photo"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Thomas%20Brodie-Sangster%20by%20Gage%20Skidmore.jpg"
+                alt="Thomas Brodie-Sangster como Newt"
+            >
+
+            <div class="cast-info">
+
+                <span class="actor">
+                    THOMAS BRODIE-SANGSTER
+                </span>
+
+                <h3>
+                    NEWT
+                </h3>
+
+                <p>
+
+                    Uma das principais figuras de liderança
+                    da Clareira.
+
+                    Newt funciona como ponte entre as regras
+                    estabelecidas e a necessidade de Thomas
+                    descobrir a verdade.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- =====================================================
+             GALLY
+        ====================================================== -->
+
+        <article class="cast-card">
+
+            <img
+                class="cast-photo"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Will%20Poulter%20%2813926029206%29.jpg"
+                alt="Will Poulter como Gally"
+            >
+
+            <div class="cast-info">
+
+                <span class="actor">
+                    WILL POULTER
+                </span>
+
+                <h3>
+                    GALLY
+                </h3>
+
+                <p>
+
+                    Um dos personagens mais resistentes às mudanças.
+
+                    Gally acredita que as regras existentes são
+                    essenciais para manter a Clareira funcionando.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- =====================================================
+             MINHO
+        ====================================================== -->
+
+        <article class="cast-card">
+
+            <img
+                class="cast-photo"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ki%20Hong%20Lee%20by%20Gage%20Skidmore.jpg"
+                alt="Ki Hong Lee como Minho"
+            >
+
+            <div class="cast-info">
+
+                <span class="actor">
+                    KI HONG LEE
+                </span>
+
+                <h3>
+                    MINHO
+                </h3>
+
+                <p>
+
+                    O principal Corredor.
+
+                    Minho conhece o Labirinto melhor do que quase
+                    qualquer outro Clareano e se torna fundamental
+                    para a busca pela saída.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- =====================================================
+             BRENDA
+        ====================================================== -->
+
+        <article class="cast-card">
+
+            <img
+                class="cast-photo"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Rosa%20Salazar%20by%20Gage%20Skidmore.jpg"
+                alt="Rosa Salazar como Brenda"
+            >
+
+            <div class="cast-info">
+
+                <span class="actor">
+                    ROSA SALAZAR
+                </span>
+
+                <h3>
+                    BRENDA
+                </h3>
+
+                <p>
+
+                    Uma sobrevivente que Thomas conhece durante
+                    sua jornada pelo mundo devastado além da Clareira.
+
+                    Brenda é determinada, corajosa e conhece bem
+                    os perigos do Scorch.
+
+                    Ao longo da história, ela se torna uma importante
+                    aliada de Thomas e participa dos acontecimentos
+                    que envolvem a WICKED e os sobreviventes.
+
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ARQUIVOS WICKED
+========================================================= -->
+
+<section id="arquivos">
+
+    <div class="section-label">
+        ARQUIVO 005 // CONFIDENCIAL
+    </div>
+
+    <h2 class="section-title">
+        Arquivos WICKED
+    </h2>
+
+    <p class="section-intro">
+
+        Quanto mais Thomas descobre, mais o Labirinto deixa de
+        parecer apenas uma prisão.
+
+        A série transforma os acontecimentos da Clareira em
+        parte de um experimento muito maior.
+
+    </p>
+
+
+    <div class="files-grid">
+
+
+        <article class="file-card">
+
+            <h3>
+                O FULGOR
+            </h3>
+
+            <p>
+
+                Uma doença que aparece no mundo devastado da série.
+
+                O conceito do Fulgor ajuda a estabelecer a dimensão
+                pós-apocalíptica da história.
+
+            </p>
+
+        </article>
+
+
+        <article class="file-card"><!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2664,3 +4932,455 @@
 </body>
 </html>
 
+
+
+            <h3>
+                OS IMUNES
+            </h3>
+
+            <p>
+
+                Thomas e outros jovens possuem características que
+                os tornam importantes para os estudos da organização.
+
+                Essa condição transforma os personagens em peças
+                fundamentais dos experimentos.
+
+            </p>
+
+        </article>
+
+
+        <article class="file-card">
+
+            <h3>
+                O EXPERIMENTO
+            </h3>
+
+            <p>
+
+                A Clareira não existe por acaso.
+
+                O Labirinto, os testes, os participantes e as
+                condições extremas fazem parte de um projeto que
+                Thomas tenta compreender ao longo da história.
+
+            </p>
+
+        </article>
+
+
+        <article class="file-card">
+
+            <h3>
+                A MEMÓRIA
+            </h3>
+
+            <p>
+
+                A perda de memória é uma das principais ferramentas
+                narrativas da série.
+
+                Ao impedir que os personagens compreendam seu passado,
+                a história coloca o público na mesma posição de
+                descoberta de Thomas.
+
+            </p>
+
+        </article>
+
+
+        <article class="file-card">
+
+            <h3>
+                OS CORREDORES
+            </h3>
+
+            <p>
+
+                Durante o dia, os Corredores exploram o Labirinto,
+                registrando caminhos e procurando padrões.
+
+                Eles representam velocidade, memória espacial e risco.
+
+            </p>
+
+        </article>
+
+
+        <article class="file-card">
+
+            <h3>
+                A SAÍDA
+            </h3>
+
+            <p>
+
+                O objetivo parece simples:
+
+                escapar.
+
+                Mas, conforme Thomas descobre mais informações,
+                a pergunta passa a ser muito maior:
+
+                escapar para onde?
+
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALERIA
+========================================================= -->
+
+<section>
+
+    <div class="section-label">
+        ARQUIVO 006 // VISUAL
+    </div>
+
+    <h2 class="section-title">
+        Fragmentos
+    </h2>
+
+
+    <div class="gallery">
+
+
+        <div class="gallery-item">
+
+            <img
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=90&w=1000&auto=format&fit=crop"
+                alt="Labirinto"
+            >
+
+            <span>
+                THE MAZE
+            </span>
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img
+                src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=90&w=1000&auto=format&fit=crop"
+                alt="Floresta"
+            >
+
+            <span>
+                THE GLADE
+            </span>
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img
+                src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=90&w=1000&auto=format&fit=crop"
+                alt="Cidade"
+            >
+
+            <span>
+                THE LAST CITY
+            </span>
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img
+                src="https://images.unsplash.com/photo-1514539079130-25950c84af65?q=90&w=1000&auto=format&fit=crop"
+                alt="Paisagem"
+            >
+
+            <span>
+                THE SCORCH
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        MAZE<span>RUNNER</span>
+    </div>
+
+    <p>
+
+        Portal independente criado para fãs do universo
+        literário e cinematográfico de Maze Runner.
+
+    </p>
+
+    <div class="credits">
+        SYSTEM END // KEEP RUNNING
+    </div>
+
+</footer>
+
+
+</main>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =========================================================
+       ANIMAÇÃO DO HERO
+    ========================================================= */
+
+    const heroTitle = document.querySelector(".hero h1");
+
+    window.addEventListener("load", () => {
+
+        heroTitle.style.opacity = "0";
+
+        heroTitle.style.transform =
+            "translateY(20px)";
+
+        setTimeout(() => {
+
+            heroTitle.style.opacity = "1";
+
+            heroTitle.style.transform =
+                "translateY(0)";
+
+        }, 300);
+
+    });
+
+
+    /* =========================================================
+       HEADER AO ROLAR
+    ========================================================= */
+
+    const header =
+        document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 80) {
+
+            header.style.background =
+                "rgba(3,5,4,.98)";
+
+        } else {
+
+            header.style.background =
+                "rgba(4,6,5,.82)";
+
+        }
+
+    });
+
+
+    /* =========================================================
+       REVEAL DOS ELEMENTOS
+    ========================================================= */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".universe-card, .book, .movie-card, .cast-card, .file-card, .gallery-item"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity =
+                            "1";
+
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: .12
+            }
+
+        );
+
+
+    revealElements.forEach(element => {
+
+        element.style.opacity = "0";
+
+        element.style.transform =
+            "translateY(25px)";
+
+        element.style.transition =
+            "opacity .7s ease, transform .7s ease";
+
+        revealObserver.observe(element);
+
+    });
+
+
+    /* =========================================================
+       EFEITO GLITCH
+    ========================================================= */
+
+    setInterval(() => {
+
+        if (Math.random() > .7) {
+
+            heroTitle.style.textShadow =
+                "3px 0 #ff5500, -3px 0 #304c36";
+
+            setTimeout(() => {
+
+                heroTitle.style.textShadow =
+                    "0 4px 20px rgba(0,0,0,.8)";
+
+            }, 80);
+
+        }
+
+    }, 1800);
+
+
+    /* =========================================================
+       GALERIA EM TELA CHEIA
+    ========================================================= */
+
+    document
+        .querySelectorAll(".gallery-item")
+        .forEach(item => {
+
+            item.addEventListener(
+                "click",
+                () => {
+
+                    const image =
+                        item.querySelector("img");
+
+                    const overlay =
+                        document.createElement("div");
+
+                    overlay.style.position =
+                        "fixed";
+
+                    overlay.style.inset =
+                        "0";
+
+                    overlay.style.zIndex =
+                        "99999";
+
+                    overlay.style.background =
+                        "rgba(0,0,0,.94)";
+
+                    overlay.style.display =
+                        "flex";
+
+                    overlay.style.alignItems =
+                        "center";
+
+                    overlay.style.justifyContent =
+                        "center";
+
+                    overlay.style.padding =
+                        "30px";
+
+                    overlay.style.cursor =
+                        "zoom-out";
+
+
+                    const img =
+                        document.createElement("img");
+
+                    img.src = image.src;
+
+                    img.style.maxWidth =
+                        "95%";
+
+                    img.style.maxHeight =
+                        "90vh";
+
+                    img.style.objectFit =
+                        "contain";
+
+                    img.style.boxShadow =
+                        "0 0 80px rgba(255,90,0,.15)";
+
+
+                    overlay.appendChild(img);
+
+                    document.body.appendChild(
+                        overlay
+                    );
+
+
+                    overlay.addEventListener(
+                        "click",
+                        () => {
+
+                            overlay.remove();
+
+                        }
+                    );
+
+                }
+            );
+
+        });
+
+
+    /* =========================================================
+       CONSOLE WICKED
+    ========================================================= */
+
+    console.log(
+        "%c WICKED SYSTEM ONLINE ",
+        "background:#ff5500;color:#fff;padding:8px;font-weight:bold;"
+    );
+
+    console.log(
+        "SUBJECT STATUS: THOMAS // MEMORY LOCKED"
+    );
+
+    console.log(
+        "SUBJECT STATUS: BRENDA // ACTIVE"
+    );
+
+</script>
+
+</body>
+
+</html>

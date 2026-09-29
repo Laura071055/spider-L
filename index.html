@@ -54,8 +54,13 @@
 
         body {
             background:
-                radial-gradient(circle at 50% 0%, rgba(48, 76, 54, .12), transparent 35%),
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(48, 76, 54, .12),
+                    transparent 35%
+                ),
                 var(--black);
+
             color: var(--gray);
             font-family: var(--body);
             overflow-x: hidden;
@@ -185,6 +190,7 @@
             width: 7px;
             height: 7px;
             border-radius: 50%;
+
             background: var(--orange);
 
             box-shadow: 0 0 12px var(--orange);
@@ -224,6 +230,7 @@
         nav a::after {
             content: "";
             position: absolute;
+
             bottom: -9px;
             left: 0;
 
@@ -287,7 +294,7 @@
             position: absolute;
             inset: 0;
 
-            background-image:
+            background:
                 radial-gradient(
                     circle at 20% 50%,
                     rgba(255,90,0,.13),
@@ -326,6 +333,7 @@
 
         .classified::before {
             content: "●";
+
             animation: pulse 1s infinite;
         }
 
@@ -462,7 +470,7 @@
         }
 
         /* =========================================================
-           SECTIONS
+           SEÇÕES
         ========================================================= */
 
         section {
@@ -525,7 +533,7 @@
         }
 
         /* =========================================================
-           UNIVERSE
+           UNIVERSO
         ========================================================= */
 
         .universe {
@@ -616,9 +624,9 @@
 
             color: white;
 
-            font-size: 1rem;
-
             margin: 30px 0 15px;
+
+            font-size: 1rem;
 
             letter-spacing: 1px;
         }
@@ -632,7 +640,7 @@
         }
 
         /* =========================================================
-           STORY / BOOKS
+           LIVROS
         ========================================================= */
 
         .story-layout {
@@ -803,7 +811,7 @@
         }
 
         /* =========================================================
-           MOVIES
+           FILMES
         ========================================================= */
 
         .movies {
@@ -915,7 +923,7 @@
         }
 
         /* =========================================================
-           CAST
+           ELENCO
         ========================================================= */
 
         .cast-section {
@@ -1041,7 +1049,7 @@
         }
 
         /* =========================================================
-           WICKED FILES
+           ARQUIVOS WICKED
         ========================================================= */
 
         .files-grid {
@@ -1114,7 +1122,7 @@
         }
 
         /* =========================================================
-           GALLERY
+           GALERIA
         ========================================================= */
 
         .gallery {
@@ -1232,7 +1240,7 @@
         }
 
         /* =========================================================
-           MOBILE
+           RESPONSIVIDADE
         ========================================================= */
 
         @media (max-width: 1000px) {
@@ -1318,6 +1326,14 @@
             .story-image {
                 min-height: 400px;
             }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
         }
 
     </style>
@@ -1336,28 +1352,54 @@
     </a>
 
     <nav>
+
         <ul>
-            <li><a href="#universo">UNIVERSO</a></li>
-            <li><a href="#livros">LIVROS</a></li>
-            <li><a href="#filmes">FILMES</a></li>
-            <li><a href="#elenco">ELENCO</a></li>
-            <li><a href="#arquivos">ARQUIVOS</a></li>
+
+            <li>
+                <a href="#universo">UNIVERSO</a>
+            </li>
+
+            <li>
+                <a href="#livros">LIVROS</a>
+            </li>
+
+            <li>
+                <a href="#filmes">FILMES</a>
+            </li>
+
+            <li>
+                <a href="#elenco">ELENCO</a>
+            </li>
+
+            <li>
+                <a href="#arquivos">ARQUIVOS</a>
+            </li>
+
         </ul>
+
     </nav>
 
     <div class="status">
+
         <span class="status-dot"></span>
+
         SYSTEM ONLINE // WICKED
+
     </div>
 
 </header>
 
 
 <!-- =========================================================
-     HERO
+     CONTEÚDO
 ========================================================= -->
 
 <main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
 
@@ -1374,10 +1416,12 @@
         </h1>
 
         <p class="hero-subtitle">
+
             Entre na Clareira e descubra o universo de
             <strong>Maze Runner</strong>: os livros de James Dashner,
             a adaptação cinematográfica, os Clareanos, o Labirinto,
             os Verdugos e os experimentos da WICKED.
+
         </p>
 
         <div class="hero-buttons">
@@ -1442,27 +1486,37 @@
     </h2>
 
     <p class="section-intro">
+
         O universo de Maze Runner combina ficção científica,
         sobrevivência e mistério. Thomas desperta sem memória
         em uma comunidade cercada por um Labirinto gigantesco.
+
         O primeiro livro apresenta essa situação como um enigma
         progressivo: cada nova informação abre uma pergunta ainda maior.
+
     </p>
 
 
     <div class="universe-grid">
 
+
         <article class="universe-card">
 
-            <div class="number">01</div>
+            <div class="number">
+                01
+            </div>
 
-            <h3>A CLAREIRA</h3>
+            <h3>
+                A CLAREIRA
+            </h3>
 
             <p>
+
                 Uma comunidade construída no centro do Labirinto.
                 Os jovens conhecidos como Clareanos precisam produzir
                 comida, organizar tarefas e sobreviver enquanto os
                 Corredores exploram as paredes em busca de uma saída.
+
             </p>
 
         </article>
@@ -1470,14 +1524,20 @@
 
         <article class="universe-card">
 
-            <div class="number">02</div>
+            <div class="number">
+                02
+            </div>
 
-            <h3>O LABIRINTO</h3>
+            <h3>
+                O LABIRINTO
+            </h3>
 
             <p>
+
                 Uma estrutura gigantesca, formada por paredes de pedra
                 que alteram sua configuração. A exploração depende de
                 mapas, memória espacial, velocidade e trabalho em equipe.
+
             </p>
 
         </article>
@@ -1485,15 +1545,20 @@
 
         <article class="universe-card">
 
-            <div class="number">03</div>
+            <div class="number">
+                03
+            </div>
 
-            <h3>OS VERDUGOS</h3>
+            <h3>
+                OS VERDUGOS
+            </h3>
 
             <p>
+
                 Criaturas biomecânicas que transformam a exploração do
                 Labirinto em uma corrida contra o tempo. No cinema,
-                seu design mistura elementos orgânicos e mecânicos para
-                criar uma ameaça visualmente marcante.
+                seu design mistura elementos orgânicos e mecânicos.
+
             </p>
 
         </article>
@@ -1501,18 +1566,24 @@
 
         <article class="universe-card">
 
-            <div class="number">04</div>
+            <div class="number">
+                04
+            </div>
 
-            <h3>WICKED / C.R.U.E.L.</h3>
+            <h3>
+                WICKED / C.R.U.E.L.
+            </h3>
 
             <p>
+
                 A organização responsável pelos experimentos que envolvem
-                Thomas e os demais jovens. Seu objetivo declarado está
-                ligado à busca de uma solução para a crise que devastou
-                o mundo.
+                Thomas e os demais jovens. Seu objetivo está ligado à
+                busca de uma solução para a crise que devastou o mundo.
+
             </p>
 
         </article>
+
 
     </div>
 
@@ -1530,16 +1601,22 @@
     </div>
 
     <h2 class="section-title">
+
         A História<br>
         nos Livros
+
     </h2>
 
+
     <div class="story-layout">
+
 
         <div class="story-image">
 
             <div class="story-stamp">
+
                 ORIGINAL SOURCE // JAMES DASHNER
+
             </div>
 
         </div>
@@ -1552,28 +1629,43 @@
             </h3>
 
             <p>
-                Publicado originalmente em 2009, <strong>The Maze Runner</strong>
-                acompanha Thomas, um adolescente que acorda em um elevador
-                sem lembrar de sua vida anterior. Ele chega à Clareira,
-                onde encontra outros jovens que também perderam suas memórias.
+
+                Publicado originalmente em 2009,
+                <strong>The Maze Runner</strong> acompanha Thomas,
+                um adolescente que acorda em um elevador sem lembrar
+                de sua vida anterior.
+
+                Ele chega à Clareira, onde encontra outros jovens
+                que também perderam suas memórias.
+
             </p>
 
             <p>
-                Ao redor deles existe um Labirinto que muda constantemente.
-                Os Corredores entram durante o dia para registrar seus caminhos
-                e precisam retornar antes do fechamento das paredes.
+
+                Ao redor deles existe um Labirinto que muda
+                constantemente. Os Corredores entram durante o dia
+                para registrar seus caminhos e precisam retornar
+                antes do fechamento das paredes.
+
             </p>
 
             <p>
-                A chegada de Teresa altera completamente a dinâmica da
-                comunidade. A partir daí, o mistério deixa de ser apenas
-                "como escapar?" e passa a envolver a própria identidade
-                dos personagens e o motivo pelo qual eles foram colocados
-                naquele lugar.
+
+                A chegada de Teresa altera completamente a dinâmica
+                da comunidade.
+
+                A partir daí, o mistério deixa de ser apenas
+                "como escapar?" e passa a envolver a própria
+                identidade dos personagens e o motivo pelo qual
+                eles foram colocados naquele lugar.
+
             </p>
 
             <div class="quote">
-                "A verdade pode ser tão perigosa quanto o próprio Labirinto."
+
+                "A verdade pode ser tão perigosa quanto
+                o próprio Labirinto."
+
             </div>
 
         </div>
@@ -1583,18 +1675,27 @@
 
     <div class="book-list">
 
+
         <article class="book">
 
-            <div class="book-number">01</div>
+            <div class="book-number">
+                01
+            </div>
 
             <div>
-                <h3>THE MAZE RUNNER — CORRER OU MORRER</h3>
+
+                <h3>
+                    THE MAZE RUNNER — CORRER OU MORRER
+                </h3>
 
                 <p>
+
                     Thomas desperta sem memória na Clareira e precisa
                     compreender o funcionamento do Labirinto antes que
                     os segredos do lugar destruam a comunidade.
+
                 </p>
+
             </div>
 
             <div class="book-year">
@@ -1606,17 +1707,24 @@
 
         <article class="book">
 
-            <div class="book-number">02</div>
+            <div class="book-number">
+                02
+            </div>
 
             <div>
-                <h3>THE SCORCH TRIALS — PROVA DE FOGO</h3>
+
+                <h3>
+                    THE SCORCH TRIALS — PROVA DE FOGO
+                </h3>
 
                 <p>
+
                     Depois do Labirinto, a história amplia sua escala.
                     Thomas e os sobreviventes enfrentam um ambiente
-                    devastado e novas ameaças enquanto tentam descobrir
-                    quem realmente controla os testes.
+                    devastado e novas ameaças.
+
                 </p>
+
             </div>
 
             <div class="book-year">
@@ -1628,16 +1736,24 @@
 
         <article class="book">
 
-            <div class="book-number">03</div>
+            <div class="book-number">
+                03
+            </div>
 
             <div>
-                <h3>THE DEATH CURE — A CURA MORTAL</h3>
+
+                <h3>
+                    THE DEATH CURE — A CURA MORTAL
+                </h3>
 
                 <p>
+
                     Thomas precisa lidar com as consequências dos testes,
                     com a WICKED e com a questão central que atravessa
-                    toda a série: até onde alguém pode ir em nome de uma cura?
+                    toda a série.
+
                 </p>
+
             </div>
 
             <div class="book-year">
@@ -1649,15 +1765,23 @@
 
         <article class="book">
 
-            <div class="book-number">04</div>
+            <div class="book-number">
+                04
+            </div>
 
             <div>
-                <h3>THE KILL ORDER</h3>
+
+                <h3>
+                    THE KILL ORDER
+                </h3>
 
                 <p>
+
                     A história retorna ao início da catástrofe e mostra
                     acontecimentos anteriores à trilogia principal.
+
                 </p>
+
             </div>
 
             <div class="book-year">
@@ -1669,15 +1793,23 @@
 
         <article class="book">
 
-            <div class="book-number">05</div>
+            <div class="book-number">
+                05
+            </div>
 
             <div>
-                <h3>THE FEVER CODE</h3>
+
+                <h3>
+                    THE FEVER CODE
+                </h3>
 
                 <p>
+
                     O segundo prequel aprofunda a origem de Thomas,
                     da WICKED e do próprio projeto do Labirinto.
+
                 </p>
+
             </div>
 
             <div class="book-year">
@@ -1685,6 +1817,7 @@
             </div>
 
         </article>
+
 
     </div>
 
@@ -1702,27 +1835,30 @@
     </div>
 
     <h2 class="section-title">
+
         A Trilogia<br>
         Cinematográfica
+
     </h2>
 
     <p class="section-intro">
-        A adaptação cinematográfica começou em 2014 com direção de
-        Wes Ball. O primeiro filme apresenta Thomas e os Clareanos
-        presos na Clareira e cercados pelo Labirinto. A 20th Century
-        Studios classifica o longa como ação, aventura, ficção científica,
-        suspense e thriller. <span data-assistant-content-reference="" class="xeh6zmm xt0psk2 x1ghz6dp" data-assistant-grouped-webpages="" data-content-reference-type="grouped_webpages"><span aria-label="Fontes" class="xt0psk2 xxhswux x11njtxf" data-assistant-grouped-webpages-list="" role="group"><span class="x1lziwak x13q3soa" data-assistant-grouped-webpages-item=""><button aria-controls="assistant-sources-dialog" aria-haspopup="dialog" aria-label="20th Century Studios" class="x1qviprw xjtw7fp xomzcpc x1cpjm7i xt81g8a xm4btww x7qwmre xrd0f8c x1hmns74 xy5mcqj x6s0dn4 xjyslct xjbqb8w xrt0l5h xu82sp8 x13yhu5o x4kf0vy xe6aan1 x1ypdohk x3nfvp2 xjb2p0i x1ivwg07 x1gqwrcx x13vifvy xc8icb0 xtu1cor x1scn00m x1lvh1i4 xsnit4v xk2swo9 xt970qd x1cg44al x1005jv x1n2onr6 xkrqix3 xxymvpz" data-assistant-sources-trigger="" data-assistant-sources-payload="[{&quot;title&quot;:&quot;The Maze Runner | 20th Century Studios&quot;,&quot;url&quot;:&quot;https://www.20thcenturystudios.com/movies/the-maze-runner?utm_source=chatgpt.com&quot;,&quot;sourceIndex&quot;:0,&quot;attribution&quot;:&quot;20th Century Studios&quot;,&quot;publishedAt&quot;:1411084800}]" data-assistant-grouped-webpages-trigger="" type="button"><span aria-hidden="true" class="x1d5dutw x4aliy7 x1r7ld26 x16rqkct x1y0btm7 xmkeg23 x12116fd x13yhu5o xe6aan1 xwz0xwf xdl72j9 x1c4vz4f x2lah0s x6phcfz x7amdea x1poez60 xo5v014 xfi1dq xb3r6kr x1ku5rj1 x1n2onr6" data-assistant-source-icon="">2<img alt="" class="x-default-marker x5yr21d xh8yej3 x10a8y8t xl1xv1r x10l6tqk" data-assistant-source-icon-image="" src="https://www.google.com/s2/favicons?domain=https%3A%2F%2Fwww.20thcenturystudios.com&sz=128" ></span><span class="x1heor9g x1qlqyl8 x1pd3egz xeuugli x101abm8 xryxfnj x1b2iylo xwgcxoh xlyipyv xuxw1ft" data-assistant-reference-title="">20th Century Studios</span></button></span></span></span>
+
+        A adaptação cinematográfica começou em 2014 com direção
+        de Wes Ball. O primeiro filme apresenta Thomas e os Clareanos
+        presos na Clareira e cercados pelo Labirinto.
 
     </p>
 
 
     <div class="movie-grid">
 
+
         <article class="movie-card">
 
             <img
                 src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=90&w=1200&auto=format&fit=crop"
-                alt="O Labirinto">
+                alt="O Labirinto"
+            >
 
             <div class="movie-info">
 
@@ -1735,9 +1871,11 @@
                 </h3>
 
                 <p>
+
                     Thomas chega à Clareira sem memória e descobre
                     que existe uma saída escondida dentro de um
                     gigantesco Labirinto patrulhado pelos Verdugos.
+
                 </p>
 
             </div>
@@ -1749,7 +1887,8 @@
 
             <img
                 src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=90&w=1200&auto=format&fit=crop"
-                alt="Prova de Fogo">
+                alt="Prova de Fogo"
+            >
 
             <div class="movie-info">
 
@@ -1762,9 +1901,11 @@
                 </h3>
 
                 <p>
+
                     A história deixa a Clareira e apresenta um mundo
                     exterior devastado. Os sobreviventes precisam
                     atravessar o ambiente conhecido como Scorch.
+
                 </p>
 
             </div>
@@ -1776,7 +1917,8 @@
 
             <img
                 src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=90&w=1200&auto=format&fit=crop"
-                alt="A Cura Mortal">
+                alt="A Cura Mortal"
+            >
 
             <div class="movie-info">
 
@@ -1789,14 +1931,17 @@
                 </h3>
 
                 <p>
+
                     Thomas e seus aliados entram em uma missão para
                     resgatar Minho e confrontar diretamente a organização
                     responsável pelos experimentos.
+
                 </p>
 
             </div>
 
         </article>
+
 
     </div>
 
@@ -1805,6 +1950,7 @@
 
 <!-- =========================================================
      ELENCO
+     ALBY REMOVIDO
 ========================================================= -->
 
 <section id="elenco" class="cast-section">
@@ -1818,23 +1964,27 @@
     </h2>
 
     <p class="section-intro">
-        A força dos filmes também está na relação entre os personagens.
-        Abaixo, o elenco principal é apresentado junto aos personagens
-        que interpretam.
+
+        Os personagens são o centro da história.
+        Cada um possui uma função diferente dentro da Clareira
+        e ajuda a construir o mistério do Labirinto.
+
     </p>
 
 
     <div class="cast-grid">
 
 
-        <!-- THOMAS -->
+        <!-- =====================================================
+             THOMAS
+        ====================================================== -->
 
         <article class="cast-card">
 
             <img
                 class="cast-photo"
                 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Dylan%20O%27Brien%20%2813948986583%29.jpg"
-                alt="Dylan O'Brien"
+                alt="Dylan O'Brien como Thomas"
             >
 
             <div class="cast-info">
@@ -1848,10 +1998,15 @@
                 </h3>
 
                 <p>
-                    O protagonista. Thomas desperta sem memória e rapidamente
-                    começa a questionar as regras da Clareira. Sua curiosidade
-                    o coloca diretamente em conflito com o sistema que mantém
-                    os Clareanos presos.
+
+                    O protagonista.
+
+                    Thomas desperta sem memória e rapidamente
+                    começa a questionar as regras da Clareira.
+
+                    Sua curiosidade o coloca diretamente em conflito
+                    com o sistema que mantém os Clareanos presos.
+
                 </p>
 
             </div>
@@ -1859,14 +2014,16 @@
         </article>
 
 
-        <!-- TERESA -->
+        <!-- =====================================================
+             TERESA
+        ====================================================== -->
 
         <article class="cast-card">
 
             <img
                 class="cast-photo"
                 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kaya%20Scodelario%20by%20Gage%20Skidmore%202014.jpg"
-                alt="Kaya Scodelario"
+                alt="Kaya Scodelario como Teresa"
             >
 
             <div class="cast-info">
@@ -1880,9 +2037,13 @@
                 </h3>
 
                 <p>
-                    A chegada de Teresa muda completamente a situação
-                    da Clareira. Sua conexão com Thomas é uma das peças
+
+                    A chegada de Teresa muda completamente
+                    a situação da Clareira.
+
+                    Sua conexão com Thomas é uma das peças
                     centrais do mistério.
+
                 </p>
 
             </div>
@@ -1890,14 +2051,16 @@
         </article>
 
 
-        <!-- NEWT -->
+        <!-- =====================================================
+             NEWT
+        ====================================================== -->
 
         <article class="cast-card">
 
             <img
                 class="cast-photo"
                 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Thomas%20Brodie-Sangster%20by%20Gage%20Skidmore.jpg"
-                alt="Thomas Brodie-Sangster"
+                alt="Thomas Brodie-Sangster como Newt"
             >
 
             <div class="cast-info">
@@ -1911,9 +2074,14 @@
                 </h3>
 
                 <p>
-                    Uma das figuras de liderança da Clareira. Newt funciona
-                    como ponte entre as regras estabelecidas e a necessidade
-                    de Thomas descobrir a verdade.
+
+                    Uma das principais figuras de liderança
+                    da Clareira.
+
+                    Newt funciona como ponte entre as regras
+                    estabelecidas e a necessidade de Thomas
+                    descobrir a verdade.
+
                 </p>
 
             </div>
@@ -1921,14 +2089,16 @@
         </article>
 
 
-        <!-- GALLY -->
+        <!-- =====================================================
+             GALLY
+        ====================================================== -->
 
         <article class="cast-card">
 
             <img
                 class="cast-photo"
                 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Will%20Poulter%20%2813926029206%29.jpg"
-                alt="Will Poulter"
+                alt="Will Poulter como Gally"
             >
 
             <div class="cast-info">
@@ -1942,9 +2112,12 @@
                 </h3>
 
                 <p>
+
                     Um dos personagens mais resistentes às mudanças.
-                    Gally acredita que as regras existentes são essenciais
-                    para manter a Clareira funcionando.
+
+                    Gally acredita que as regras existentes são
+                    essenciais para manter a Clareira funcionando.
+
                 </p>
 
             </div>
@@ -1952,14 +2125,16 @@
         </article>
 
 
-        <!-- MINHO -->
+        <!-- =====================================================
+             MINHO
+        ====================================================== -->
 
         <article class="cast-card">
 
             <img
                 class="cast-photo"
                 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ki%20Hong%20Lee%20by%20Gage%20Skidmore.jpg"
-                alt="Ki Hong Lee"
+                alt="Ki Hong Lee como Minho"
             >
 
             <div class="cast-info">
@@ -1973,44 +2148,19 @@
                 </h3>
 
                 <p>
-                    O principal Corredor. Minho conhece o Labirinto melhor
-                    do que quase qualquer outro Clareano e se torna
-                    fundamental para a busca pela saída.
+
+                    O principal Corredor.
+
+                    Minho conhece o Labirinto melhor do que quase
+                    qualquer outro Clareano e se torna fundamental
+                    para a busca pela saída.
+
                 </p>
 
             </div>
 
         </article>
 
-
-        <!-- ALBY -->
-
-        <article class="cast-card">
-
-            <img
-                class="cast-photo"
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=90&w=900&auto=format&fit=crop"
-                alt="Personagem Alby"
-            >
-
-            <div class="cast-info">
-
-                <span class="actor">
-                    AML AMEEN
-                </span>
-
-                <h3>
-                    ALBY
-                </h3>
-
-                <p>
-                    O líder original da Clareira. Alby representa a estrutura
-                    construída pelos Clareanos antes da chegada de Thomas.
-                </p>
-
-            </div>
-
-        </article>
 
     </div>
 
@@ -2018,7 +2168,7 @@
 
 
 <!-- =========================================================
-     WICKED FILES
+     ARQUIVOS WICKED
 ========================================================= -->
 
 <section id="arquivos">
@@ -2032,9 +2182,13 @@
     </h2>
 
     <p class="section-intro">
-        Quanto mais Thomas descobre, mais o Labirinto deixa de parecer
-        apenas uma prisão. A série transforma os acontecimentos da
-        Clareira em parte de um experimento muito maior.
+
+        Quanto mais Thomas descobre, mais o Labirinto deixa de
+        parecer apenas uma prisão.
+
+        A série transforma os acontecimentos da Clareira em
+        parte de um experimento muito maior.
+
     </p>
 
 
@@ -2048,10 +2202,12 @@
             </h3>
 
             <p>
+
                 Uma doença que aparece no mundo devastado da série.
+
                 O conceito do Fulgor ajuda a estabelecer a dimensão
-                pós-apocalíptica da história e dá contexto para os
-                experimentos conduzidos pela WICKED.
+                pós-apocalíptica da história.
+
             </p>
 
         </article>
@@ -2064,10 +2220,13 @@
             </h3>
 
             <p>
-                Thomas e outros jovens possuem características que os
-                tornam importantes para os estudos da organização.
+
+                Thomas e outros jovens possuem características que
+                os tornam importantes para os estudos da organização.
+
                 Essa condição transforma os personagens em peças
                 fundamentais dos experimentos.
+
             </p>
 
         </article>
@@ -2080,10 +2239,13 @@
             </h3>
 
             <p>
-                A Clareira não existe por acaso. O Labirinto, os testes,
-                os participantes e as condições extremas fazem parte
-                de um projeto que Thomas tenta compreender ao longo
-                da história.
+
+                A Clareira não existe por acaso.
+
+                O Labirinto, os testes, os participantes e as
+                condições extremas fazem parte de um projeto que
+                Thomas tenta compreender ao longo da história.
+
             </p>
 
         </article>
@@ -2096,10 +2258,14 @@
             </h3>
 
             <p>
+
                 A perda de memória é uma das principais ferramentas
-                narrativas da série. Ao impedir que os personagens
-                compreendam seu passado, a história coloca o público
-                na mesma posição de descoberta de Thomas.
+                narrativas da série.
+
+                Ao impedir que os personagens compreendam seu passado,
+                a história coloca o público na mesma posição de
+                descoberta de Thomas.
+
             </p>
 
         </article>
@@ -2112,9 +2278,12 @@
             </h3>
 
             <p>
+
                 Durante o dia, os Corredores exploram o Labirinto,
-                registrando caminhos e procurando padrões. Eles
-                representam velocidade, memória espacial e risco.
+                registrando caminhos e procurando padrões.
+
+                Eles representam velocidade, memória espacial e risco.
+
             </p>
 
         </article>
@@ -2127,12 +2296,20 @@
             </h3>
 
             <p>
-                O objetivo parece simples: escapar. Mas, conforme
-                Thomas descobre mais informações, a pergunta passa
-                a ser muito maior: escapar para onde?
+
+                O objetivo parece simples:
+
+                escapar.
+
+                Mas, conforme Thomas descobre mais informações,
+                a pergunta passa a ser muito maior:
+
+                escapar para onde?
+
             </p>
 
         </article>
+
 
     </div>
 
@@ -2155,6 +2332,7 @@
 
 
     <div class="gallery">
+
 
         <div class="gallery-item">
 
@@ -2211,6 +2389,7 @@
 
         </div>
 
+
     </div>
 
 </section>
@@ -2227,8 +2406,10 @@
     </div>
 
     <p>
-        Portal independente criado para fãs do universo literário
-        e cinematográfico de Maze Runner.
+
+        Portal independente criado para fãs do universo
+        literário e cinematográfico de Maze Runner.
+
     </p>
 
     <div class="credits">
@@ -2236,6 +2417,7 @@
     </div>
 
 </footer>
+
 
 </main>
 
@@ -2247,7 +2429,7 @@
 <script>
 
     /* =========================================================
-       EFEITO DE TEXTO NO HERO
+       ANIMAÇÃO DO HERO
     ========================================================= */
 
     const heroTitle = document.querySelector(".hero h1");
@@ -2255,7 +2437,9 @@
     window.addEventListener("load", () => {
 
         heroTitle.style.opacity = "0";
-        heroTitle.style.transform = "translateY(20px)";
+
+        heroTitle.style.transform =
+            "translateY(20px)";
 
         setTimeout(() => {
 
@@ -2263,7 +2447,9 @@
                 "opacity 1s ease, transform 1s ease";
 
             heroTitle.style.opacity = "1";
-            heroTitle.style.transform = "translateY(0)";
+
+            heroTitle.style.transform =
+                "translateY(0)";
 
         }, 300);
 
@@ -2274,7 +2460,8 @@
        HEADER AO ROLAR
     ========================================================= */
 
-    const header = document.querySelector("header");
+    const header =
+        document.querySelector("header");
 
     window.addEventListener("scroll", () => {
 
@@ -2294,44 +2481,53 @@
 
 
     /* =========================================================
-       REVEAL DAS SEÇÕES
+       REVEAL DOS ELEMENTOS
     ========================================================= */
 
-    const revealElements = document.querySelectorAll(
-        ".universe-card, .book, .movie-card, .cast-card, .file-card, .gallery-item"
-    );
+    const revealElements =
+        document.querySelectorAll(
+            ".universe-card, .book, .movie-card, .cast-card, .file-card, .gallery-item"
+        );
 
-    const revealObserver = new IntersectionObserver(
 
-        entries => {
+    const revealObserver =
+        new IntersectionObserver(
 
-            entries.forEach(entry => {
+            entries => {
 
-                if (entry.isIntersecting) {
+                entries.forEach(entry => {
 
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
+                    if (entry.isIntersecting) {
 
-                    revealObserver.unobserve(entry.target);
+                        entry.target.style.opacity =
+                            "1";
 
-                }
+                        entry.target.style.transform =
+                            "translateY(0)";
 
-            });
+                        revealObserver.unobserve(
+                            entry.target
+                        );
 
-        },
+                    }
 
-        {
-            threshold: .12
-        }
+                });
 
-    );
+            },
+
+            {
+                threshold: .12
+            }
+
+        );
 
 
     revealElements.forEach(element => {
 
         element.style.opacity = "0";
 
-        element.style.transform = "translateY(25px)";
+        element.style.transform =
+            "translateY(25px)";
 
         element.style.transition =
             "opacity .7s ease, transform .7s ease";
@@ -2342,7 +2538,7 @@
 
 
     /* =========================================================
-       EFEITO GLITCH RANDOMIZADO
+       EFEITO GLITCH
     ========================================================= */
 
     setInterval(() => {
@@ -2365,55 +2561,93 @@
 
 
     /* =========================================================
-       CLICK NA GALERIA
+       GALERIA EM TELA CHEIA
     ========================================================= */
 
-    document.querySelectorAll(".gallery-item").forEach(item => {
+    document
+        .querySelectorAll(".gallery-item")
+        .forEach(item => {
 
-        item.addEventListener("click", () => {
+            item.addEventListener(
+                "click",
+                () => {
 
-            const image = item.querySelector("img");
+                    const image =
+                        item.querySelector("img");
 
-            const overlay = document.createElement("div");
+                    const overlay =
+                        document.createElement("div");
 
-            overlay.style.position = "fixed";
-            overlay.style.inset = "0";
-            overlay.style.zIndex = "99999";
-            overlay.style.background = "rgba(0,0,0,.94)";
-            overlay.style.display = "flex";
-            overlay.style.alignItems = "center";
-            overlay.style.justifyContent = "center";
-            overlay.style.padding = "30px";
-            overlay.style.cursor = "zoom-out";
+                    overlay.style.position =
+                        "fixed";
 
-            const img = document.createElement("img");
+                    overlay.style.inset =
+                        "0";
 
-            img.src = image.src;
+                    overlay.style.zIndex =
+                        "99999";
 
-            img.style.maxWidth = "95%";
-            img.style.maxHeight = "90vh";
-            img.style.objectFit = "contain";
+                    overlay.style.background =
+                        "rgba(0,0,0,.94)";
 
-            img.style.boxShadow =
-                "0 0 80px rgba(255,90,0,.15)";
+                    overlay.style.display =
+                        "flex";
 
-            overlay.appendChild(img);
+                    overlay.style.alignItems =
+                        "center";
 
-            document.body.appendChild(overlay);
+                    overlay.style.justifyContent =
+                        "center";
 
-            overlay.addEventListener("click", () => {
+                    overlay.style.padding =
+                        "30px";
 
-                overlay.remove();
+                    overlay.style.cursor =
+                        "zoom-out";
 
-            });
+
+                    const img =
+                        document.createElement("img");
+
+                    img.src = image.src;
+
+                    img.style.maxWidth =
+                        "95%";
+
+                    img.style.maxHeight =
+                        "90vh";
+
+                    img.style.objectFit =
+                        "contain";
+
+                    img.style.boxShadow =
+                        "0 0 80px rgba(255,90,0,.15)";
+
+
+                    overlay.appendChild(img);
+
+                    document.body.appendChild(
+                        overlay
+                    );
+
+
+                    overlay.addEventListener(
+                        "click",
+                        () => {
+
+                            overlay.remove();
+
+                        }
+                    );
+
+                }
+            );
 
         });
 
-    });
-
 
     /* =========================================================
-       TERMINAL NO CONSOLE
+       CONSOLE WICKED
     ========================================================= */
 
     console.log(
@@ -2429,3 +2663,4 @@
 
 </body>
 </html>
+

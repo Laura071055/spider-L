@@ -670,6 +670,10 @@
             margin-top: 70px;
         }
 
+        /* =========================================================
+           NOVA IMAGEM OFICIAL DOS LIVROS
+        ========================================================= */
+
         .story-image {
             min-height: 550px;
 
@@ -679,23 +683,87 @@
 
             border: 1px solid var(--border);
 
+            background: #080b09;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 25px;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.45);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+
+            max-height: 500px;
+
+            object-fit: contain;
+
+            position: relative;
+
+            z-index: 1;
+
+            filter:
+                brightness(.82)
+                saturate(.82)
+                contrast(1.08);
+
+            transition:
+                transform .6s ease,
+                filter .6s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.04);
+
+            filter:
+                brightness(1)
+                saturate(1)
+                contrast(1.05);
+        }
+
+        .story-image::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
             background:
-                url("https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=90&w=1200&auto=format&fit=crop")
-                center / cover;
+                radial-gradient(
+                    circle at center,
+                    rgba(255,90,0,.12),
+                    transparent 55%
+                );
+
+            pointer-events: none;
+
+            z-index: 2;
         }
 
         .story-image::after {
             content: "";
 
             position: absolute;
+
             inset: 0;
 
             background:
                 linear-gradient(
-                    90deg,
-                    rgba(5,7,6,.15),
-                    rgba(5,7,6,.9)
+                    180deg,
+                    transparent 50%,
+                    rgba(5,7,6,.65) 100%
                 );
+
+            pointer-events: none;
+
+            z-index: 2;
         }
 
         .story-stamp {
@@ -704,7 +772,7 @@
             left: 25px;
             bottom: 25px;
 
-            z-index: 2;
+            z-index: 3;
 
             padding: 12px;
 
@@ -716,7 +784,10 @@
             font-size: .55rem;
             letter-spacing: 2px;
 
-            background: rgba(0,0,0,.7);
+            background: rgba(0,0,0,.75);
+
+            box-shadow:
+                0 0 20px rgba(255,90,0,.12);
         }
 
         .story-text h3 {
@@ -1311,6 +1382,10 @@
             .gallery {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .story-image {
+                min-height: 500px;
+            }
         }
 
         @media (max-width: 650px) {
@@ -1358,7 +1433,19 @@
             }
 
             .story-image {
-                min-height: 400px;
+                min-height: 420px;
+                padding: 15px;
+            }
+
+            .story-image img {
+                max-height: 390px;
+            }
+
+            .story-stamp {
+                left: 15px;
+                bottom: 15px;
+
+                font-size: .48rem;
             }
 
             .hero-buttons {
@@ -1635,10 +1722,20 @@
 
     <div class="story-layout">
 
+        <!-- =====================================================
+             IMAGEM OFICIAL DA COLEÇÃO
+        ====================================================== -->
+
         <div class="story-image">
 
+            <img
+                src="https://images3.penguinrandomhouse.com/cover/9781524771034"
+                alt="Box oficial com cinco livros da série Maze Runner de James Dashner"
+                loading="lazy"
+            >
+
             <div class="story-stamp">
-                ORIGINAL SOURCE // JAMES DASHNER
+                OFFICIAL COLLECTION // JAMES DASHNER
             </div>
 
         </div>
@@ -1852,11 +1949,6 @@
 
     <div class="movie-grid">
 
-
-        <!-- =====================================================
-             FILME 01
-        ====================================================== -->
-
         <article class="movie-card">
 
             <img
@@ -1885,10 +1977,6 @@
 
         </article>
 
-
-        <!-- =====================================================
-             FILME 02
-        ====================================================== -->
 
         <article class="movie-card">
 
@@ -1919,10 +2007,6 @@
         </article>
 
 
-        <!-- =====================================================
-             FILME 03
-        ====================================================== -->
-
         <article class="movie-card">
 
             <img
@@ -1951,7 +2035,6 @@
 
         </article>
 
-
     </div>
 
 </section>
@@ -1959,7 +2042,6 @@
 
 <!-- =========================================================
      ELENCO
-     ALBY REMOVIDO
 ========================================================= -->
 
 <section id="elenco" class="cast-section">
@@ -1982,7 +2064,6 @@
 
 
     <div class="cast-grid">
-
 
         <!-- THOMAS -->
 
@@ -2155,7 +2236,6 @@
 
         </article>
 
-
     </div>
 
 </section>
@@ -2187,7 +2267,6 @@
 
 
     <div class="files-grid">
-
 
         <article class="file-card">
 
@@ -2292,7 +2371,6 @@
 
         </article>
 
-
     </div>
 
 </section>
@@ -2314,7 +2392,6 @@
 
 
     <div class="gallery">
-
 
         <div class="gallery-item">
 
@@ -2374,7 +2451,6 @@
             </span>
 
         </div>
-
 
     </div>
 
